@@ -454,3 +454,32 @@ tests:
 
 
 ```
+
+## 17. POC Implementation in This Repository
+
+This repository now contains a **first executable POC** for the spec above.
+
+### Included files
+- `tools/skillc.py`: a tiny `skillc` prototype compiler.
+- `skillc`: shell wrapper to run the compiler.
+- `examples/hello.skill`: minimal example app using the required section layout.
+
+### Supported POC features
+- `skillc build <entry> -o <artifact>` command shape from §14.
+- validates top-level section order (`public:` then `private:` then optional `tests:`).
+- validates required `pub skill` doc header fields from §9.2.
+- supports `steps:` with `do console.println("...")` statements and `return`.
+- generates a native executable by transpiling to C and compiling with `gcc`/`cc`.
+- emits an artifact manifest JSON next to the binary.
+
+### Build and run the example
+```bash
+./skillc build examples/hello.skill -o build/hello
+./build/hello
+```
+
+Expected output:
+```text
+ReviewFirst POC is running
+Hello from SkillScript v0.1
+```

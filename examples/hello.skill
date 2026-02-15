@@ -1,0 +1,25 @@
+public:
+  /// intent: Print startup text for the ReviewFirst POC.
+  /// inputs: No runtime inputs.
+  /// errors: None in this minimal example.
+  /// effects: IO via console output.
+  /// requires: none
+  /// ensures: Writes two lines to stdout.
+  pub skill HelloWorld() -> Result[Unit, String] !{IO} =
+    steps:
+      do console.println("ReviewFirst POC is running")
+      do console.println("Hello from SkillScript v0.1")
+      return Ok(())
+
+private:
+  fn placeholder() -> Unit !{} =
+    ()
+
+tests:
+  test "hello smoke":
+    arrange:
+      let nothing = 0
+    act:
+      let result = nothing
+    assert:
+      expect(result == 0)
